@@ -3,6 +3,7 @@ package com.collegecapstoneteam1.cookingapp.ui.viewmodel
 import androidx.lifecycle.*
 import com.collegecapstoneteam1.cookingapp.data.repository.RecipeRepository
 
+@Suppress("UNCHECKED_CAST")
 class MainViewModelProviderFactory(
     private val recipeRepository: RecipeRepository
 ) : ViewModelProvider.Factory {

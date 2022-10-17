@@ -7,17 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.collegecapstoneteam1.cookingapp.R
-import com.collegecapstoneteam1.cookingapp.data.model.Recipe
 import com.collegecapstoneteam1.cookingapp.databinding.FragmentDetailBinding
-import com.collegecapstoneteam1.cookingapp.databinding.FragmentFavoriteBinding
 import com.collegecapstoneteam1.cookingapp.ui.adapter.RecipeAdapter
 import com.collegecapstoneteam1.cookingapp.ui.adapter.RecipeDetailAdapter
+import com.collegecapstoneteam1.cookingapp.ui.viewmodel.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class DetailFragment : Fragment() {
     private var _binding: FragmentDetailBinding? = null
@@ -25,6 +24,8 @@ class DetailFragment : Fragment() {
     
     private val args by navArgs<DetailFragmentArgs>()
     private lateinit var detailAdapter: RecipeDetailAdapter
+
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +38,9 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = (activity as MainActivity).viewModel
+
         val recipe = args.recipe
 
         binding.tvRecipeTitle.text = recipe.rCPNM
@@ -49,7 +53,12 @@ class DetailFragment : Fragment() {
         setupRecyclerView()
         detailAdapter.submitList(recipe.getDetailList())
 
-        Log.d(TAG, "recipe.toString(): ${recipe.toString()}")
+        binding.ivRecipeFavorite.setOnClickListener {
+            viewModel.saveRecipe(recipe)
+
+            Log.d(TAG, "onViewCreated: ${viewModel.favoriteeRecipesLiveData.value}")
+            //Snackbar.make(view, "Book has saved", Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupRecyclerView() {
