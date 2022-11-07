@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             //navController.graph
             setOf(
-                R.id.fragment_search, R.id.fragment_favorite, R.id.fragment_settings
+                R.id.fragment_search, R.id.fragment_favorite, R.id.fragment_settings,R.id.fragment_home
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

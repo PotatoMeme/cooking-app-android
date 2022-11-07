@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cooking_nav_graph"
-    app:startDestination="@id/fragment_search">
+    app:startDestination="@id/fragment_home">
 
     <fragment
         android:id="@+id/fragment_favorite"
@@ -39,5 +39,17 @@
         <argument
             android:name="recipe"
             app:argType="com.collegecapstoneteam1.cookingapp.data.model.Recipe" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.collegecapstoneteam1.cookingapp.ui.view.HomeFragment"
+        android:label="@string/home" >
+        <action
+            android:id="@+id/action_fragment_search_to_detailFragment"
+            app:destination="@id/fragment_detail"
+            app:enterAnim="@anim/slide_to_left_enter"
+            app:exitAnim="@anim/slide_to_left_exit"
+            app:popEnterAnim="@anim/slide_to_right_enter"
+            app:popExitAnim="@anim/slide_to_right_exit" />
     </fragment>
 </navigation>
