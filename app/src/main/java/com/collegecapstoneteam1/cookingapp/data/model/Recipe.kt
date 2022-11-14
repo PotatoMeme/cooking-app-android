@@ -13,23 +13,23 @@ import retrofit2.http.GET
 @Entity(tableName = "recipes")
 data class Recipe(
     @SerializedName("ATT_FILE_NO_MAIN")
-    val aTTFILENOMAIN: String,
+    val aTTFILENOMAIN: String,//이미지경로(소)
     @SerializedName("ATT_FILE_NO_MK")
-    val aTTFILENOMK: String,
+    val aTTFILENOMK: String,//이미지경로(대)
     @SerializedName("HASH_TAG")
-    val hASHTAG: String,
+    val hASHTAG: String,//해쉬태그
     @SerializedName("INFO_CAR")
-    val iNFOCAR: String,
+    val iNFOCAR: String,//탄수화물
     @SerializedName("INFO_ENG")
-    val iNFOENG: String,
+    val iNFOENG: String,//열량
     @SerializedName("INFO_FAT")
-    val iNFOFAT: String,
+    val iNFOFAT: String,//지방
     @SerializedName("INFO_NA")
-    val iNFONA: String,
+    val iNFONA: String,//나트륨
     @SerializedName("INFO_PRO")
-    val iNFOPRO: String,
+    val iNFOPRO: String,//단백질
     @SerializedName("INFO_WGT")
-    val iNFOWGT: String,
+    val iNFOWGT: String,//중량(1인분)
 
     // MANUAL_TEXT
 
@@ -118,18 +118,18 @@ data class Recipe(
     val mANUALIMG20: String,
 
     @SerializedName("RCP_NM")
-    val rCPNM: String,
+    val rCPNM: String,//메뉴명
     @SerializedName("RCP_PARTS_DTLS")
-    val rCPPARTSDTLS: String,
+    val rCPPARTSDTLS: String,//재료정보
     @SerializedName("RCP_PAT2")
-    val rCPPAT2: String,
+    val rCPPAT2: String,//요리종류
 
     @PrimaryKey(autoGenerate = false)
     @SerializedName("RCP_SEQ")
-    val rCPSEQ: String,
+    val rCPSEQ: String,//일련번호
 
     @SerializedName("RCP_WAY2")
-    val rCPWAY2: String,
+    val rCPWAY2: String,//조리방법
 ) : Parcelable {
     fun getDetailList() : List<Detail>{
         val size = getDetailSize()
